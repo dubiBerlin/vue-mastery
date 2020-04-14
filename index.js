@@ -5,6 +5,6 @@ data: {
   description:"100% cotton",
   image_sock:"./assets/green.png",
   my_link:"https://www.google.com",
-  inStock:true
+  inventory:21
  }
 })
