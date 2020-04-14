@@ -3,12 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" >
     <title>Titel</title>
   </head>
   <body>
 
+    <div class="nav-bar">
+    </div>
     <div id="app">
-      <h1>Product goes here</h1>
+      <div class="product">
+        <h1>{{product}}</h1>
+        {{description}}
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="index.js" ></script>
