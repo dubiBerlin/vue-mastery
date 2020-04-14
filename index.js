@@ -4,6 +4,7 @@ data: {
   product: "Socks",
   description:"100% cotton",
   image_sock:"./assets/green.png",
-  my_link:"https://www.google.com"
+  my_link:"https://www.google.com",
+  inStock:true
  }
 })
