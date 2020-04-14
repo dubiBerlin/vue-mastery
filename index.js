@@ -5,14 +5,14 @@ data: {
   description:"100% cotton",
   image_sock:"./assets/green.png",
   my_link:"https://www.google.com",
-  inventory:1,
+  inventory:12,
   details:["80% cotton", "20% polyester", "Gender-neutral"],
   variants:[{
       variantId: 2234,
       variantColor: "green",
       variantImage: "./assets/green.png"
   },{
-    variantId: 2234,
+    variantId: 2235,
     variantColor: "blue",
       variantImage: "./assets/blue.png"
   }],
@@ -21,11 +21,15 @@ data: {
  },
  methods:{
    addToCart(){
-     this.cart++;
+     if(this.inventory>0){
+      this.cart++;
+      this.inventory--;
+     }     
    },       
    removeFromCart(){
     if(this.cart>0){
       this.cart--;
+      this.inventory++;
     } 
    },
    updateProduct(productImage) {
