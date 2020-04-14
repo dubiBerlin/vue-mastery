@@ -3,6 +3,7 @@ el: "#app",
 data: {
   product: "Socks",
   description:"100% cotton",
-  image_sock:"./assets/green.png"
+  image_sock:"./assets/green.png",
+  my_link:"https://www.google.com"
  }
 })
