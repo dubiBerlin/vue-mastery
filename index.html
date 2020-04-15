@@ -34,8 +34,11 @@
                     :class="{disabledButton: inventory==0}" >Add to Cart</button>
             <br/>
             <ul>
-              <li class="color-box" :style="{backgroundColor: variant.variantColor}"
-                @mouseover="updateProduct(variant.variantImage)" v-for="variant in variants" :key="variant.variantId">
+              <li v-for="(variant,index) in variants"
+                  :key="variant.variantId"
+                  class="color-box" 
+                  :style="{backgroundColor: variant.variantColor}"
+                  @mouseover="updateProduct(index)" >
                </li>
             </ul>
             <button v-on:click="removeFromCart">Remove from Cart</button>

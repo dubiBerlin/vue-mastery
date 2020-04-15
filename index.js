@@ -4,7 +4,8 @@ data: {
   brand:"Vue Mastery",
   product: "Socks",
   description:"100% cotton",
-  image_sock:"./assets/green.png",
+  // image_sock:"./assets/green.png",
+  selectedVariant:0,
   my_link:"https://www.google.com",
   inventory:12,
   details:["80% cotton", "20% polyester", "Gender-neutral"],
@@ -33,13 +34,16 @@ data: {
       this.inventory++;
     } 
    },
-   updateProduct(productImage) {
-     this.image_sock = productImage;
+   updateProduct(index) {
+     this.selectedVariant = index;
    }
  },
  computed:{
    title(){
      return `${this.brand} ${this.product}`;
+    },
+    image_sock(){
+      return this.variants[this.selectedVariant].variantImage;     
     }
  }
 })
