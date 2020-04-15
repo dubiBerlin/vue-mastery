@@ -196,8 +196,8 @@ Vue.component("product-tabs",{
       >
         {{tab}}
       </span>
-      <product-review @review-submitted="addReview"></product-review>
-      <div>
+      <product-review v-if="selectedTab=='Make a Review'"  @review-submitted="addReview"></product-review>
+      <div  v-if="selectedTab=='Reviews'" >
         <h2>Reviews</h2>
         <p v-show="!reviews.length" >There are no reviews yet.</p>
         <ul>
