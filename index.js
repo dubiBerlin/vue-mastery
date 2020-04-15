@@ -7,16 +7,18 @@ data: {
   // image_sock:"./assets/green.png",
   selectedVariant:0,
   my_link:"https://www.google.com",
-  inventory:12,
+  // inventory:12,
   details:["80% cotton", "20% polyester", "Gender-neutral"],
   variants:[{
       variantId: 2234,
       variantColor: "green",
-      variantImage: "./assets/green.png"
+      variantImage: "./assets/green.png",
+      variantQuantity:0,
   },{
     variantId: 2235,
     variantColor: "blue",
-      variantImage: "./assets/blue.png"
+    variantImage: "./assets/blue.png",
+    variantQuantity: 10,
   }],
   sizes:[12.5,9, 9.5],
   cart:0
@@ -44,6 +46,10 @@ data: {
     },
     image_sock(){
       return this.variants[this.selectedVariant].variantImage;     
+    },
+    inventory(){
+      return this.variants[this.selectedVariant].variantQuantity;
     }
+
  }
 })
