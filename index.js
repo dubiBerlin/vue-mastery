@@ -36,7 +36,9 @@ Vue.component("product", {
         </ul>
         <p>Shipping: {{shipping}}</p>
         <button v-on:click="removeFromCart">Remove from Cart</button>
+
         <p>
+        <product-tabs></product-tabs>
           <product-review @review-submitted="addReview" ></product-review>
         </p>
         <div>
@@ -177,7 +179,7 @@ Vue.component("product-review",{
   },
   methods:{
     onSubmit(){
-
+      this.errors = [];
       if(this.name && this.review && this.rating){
         let productReview = {
           name: this.name,
@@ -195,6 +197,21 @@ Vue.component("product-review",{
         if (!this.rating) this.errors.push("Rating required");
       }
 
+    }
+  }
+})
+
+Vue.component("product-tabs",{
+  template:`
+    <div>
+      <span class="tab"  v-for="(tab, index) in tabs" :key="index">
+        {{tab}}
+      </span>
+    </div>
+  `,
+  data(){
+    return {
+      tabs:["Reviews","Make a Review"]
     }
   }
 })
