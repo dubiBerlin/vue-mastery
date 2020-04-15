@@ -67,12 +67,13 @@ Vue.component("product", {
      if(this.inventory>0){
       // this.cart++;
       this.variants[this.selectedVariant].variantQuantity--;
-      this.$emit("add-to-cart");
+      this.$emit("add-to-cart", this.variants[this.selectedVariant].variantId);
      }     
    },       
    removeFromCart(){
     if(this.cart>0){
       this.cart--;
+      this.$emit("remove-from-cart", this.variants[this.selectedVariant].variantId);
       this.variants[this.selectedVariant].variantQuantity++;
     } 
    },
@@ -119,11 +120,14 @@ var app = new Vue({
   el: "#app",
   data:{
     premium: true,
-    cart: 0
+    cart: []
   },
   methods:{
-    updateCart(){
-      this.cart++;
+    updateCart(id){
+      this.cart.push(id);
+    },
+    removeFromCart(id) {
+      this.cart.pop();
     }
   }
 })
