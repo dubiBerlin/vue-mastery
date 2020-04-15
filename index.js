@@ -135,6 +135,13 @@ Vue.component("product-review",{
   template: 
   `<form class="review-form" @submit.prevent="onSubmit"  >
     
+  <p v-if="errors.length" >
+      <b>Please correct the following errors</b> 
+      <ul>
+        <li v-for="error in errors" style="color:red"> {{error}} </li>
+      </ul>
+    </p>
+    
     <p>
       <label for="name" >Name: </label>
       <input id="name" v-model="name">  
