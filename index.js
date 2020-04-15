@@ -36,9 +36,6 @@ Vue.component("product", {
         </ul>
         <p>Shipping: {{shipping}}</p>
         <button v-on:click="removeFromCart">Remove from Cart</button>
-        <div class="cart">
-          <p>Cart({{cart}})</p>
-        </div>
       </div>
       <a v-bind:href="my_link">Google</a>        
   </div>`,
@@ -62,8 +59,7 @@ Vue.component("product", {
         variantImage: "./assets/blue.png",
         variantQuantity: 10,
       }],
-      sizes:[12.5,9, 9.5],
-      cart:0
+      sizes:[12.5,9, 9.5]
     }
  },
  methods:{
@@ -121,6 +117,7 @@ Vue.component("productDetails", {
 var app = new Vue({
   el: "#app",
   data:{
-    premium: true
+    premium: true,
+    cart: 0
   }
 })
