@@ -38,20 +38,9 @@ Vue.component("product", {
         <button v-on:click="removeFromCart">Remove from Cart</button>
 
         <p>
-        <product-tabs></product-tabs>
-          <product-review @review-submitted="addReview" ></product-review>
+          <product-tabs :reviews="reviews"></product-tabs>
         </p>
-        <div>
-          <h2>Reviews</h2>
-          <p v-show="!reviews.length" >There are no reviews yet.</p>
-          <ul>
-            <li v-for="review in reviews"  >
-             <p>Name: {{ review.name }}</p>
-             <p>Review: {{ review.review }}</p>
-             <p>Rating: {{ review.rating }}</p> 
-            </li>
-          </ul>
-        </div>
+        
         </div>
        <a v-bind:href="my_link">Google</a>
   </div>`,
@@ -96,9 +85,6 @@ Vue.component("product", {
    },
    updateProduct(index) {
      this.selectedVariant = index;
-   },
-   addReview(productReview){
-    this.reviews.push(productReview);
    }
  },
  computed:{
@@ -210,12 +196,35 @@ Vue.component("product-tabs",{
       >
         {{tab}}
       </span>
+      <product-review @review-submitted="addReview"></product-review>
+      <div>
+        <h2>Reviews</h2>
+        <p v-show="!reviews.length" >There are no reviews yet.</p>
+        <ul>
+          <li v-for="review in reviews"  >
+            <p>Name: {{ review.name }}</p>
+            <p>Review: {{ review.review }}</p>
+            <p>Rating: {{ review.rating }}</p> 
+          </li>
+        </ul>
+      </div> 
     </div>
   `,
   data(){
     return {
       tabs:["Reviews","Make a Review"],
       selectedTab:"Reviews"
+    }
+  },
+  props:{
+    reviews:{
+      type:Array,
+      required:true
+    }
+  },
+  methods:{
+    addReview(productReview) {
+      this.reviews.push(productReview);
     }
   }
 })
