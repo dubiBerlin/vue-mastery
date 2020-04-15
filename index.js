@@ -65,14 +65,15 @@ Vue.component("product", {
  methods:{
    addToCart(){
      if(this.inventory>0){
-      this.cart++;
-      this.inventory--;
+      // this.cart++;
+      this.variants[this.selectedVariant].variantQuantity--;
+      this.$emit("add-to-cart");
      }     
    },       
    removeFromCart(){
     if(this.cart>0){
       this.cart--;
-      this.inventory++;
+      this.variants[this.selectedVariant].variantQuantity++;
     } 
    },
    updateProduct(index) {
@@ -119,5 +120,10 @@ var app = new Vue({
   data:{
     premium: true,
     cart: 0
+  },
+  methods:{
+    updateCart(){
+      this.cart++;
+    }
   }
 })
