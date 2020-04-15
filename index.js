@@ -37,7 +37,7 @@ Vue.component("product", {
         <p>Shipping: {{shipping}}</p>
         <button v-on:click="removeFromCart">Remove from Cart</button>
         <p>
-          <product-review></product-review>
+          <product-review @review-submitted="addReview" ></product-review>
         </p>
         </div>
        <a v-bind:href="my_link">Google</a>
@@ -62,7 +62,8 @@ Vue.component("product", {
         variantImage: "./assets/blue.png",
         variantQuantity: 10,
       }],
-      sizes:[12.5,9, 9.5]
+      sizes:[12.5,9, 9.5],
+      reviews:[]
     }
  },
  methods:{
@@ -82,6 +83,9 @@ Vue.component("product", {
    },
    updateProduct(index) {
      this.selectedVariant = index;
+   },
+   addReview(productReview){
+    this.reviews.push(productReview);
    }
  },
  computed:{
