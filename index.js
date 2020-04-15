@@ -17,9 +17,7 @@ Vue.component("product", {
         <p v-else-if="inventory <= 10 && inventory > 0" >Almost sold out</p>
         <p v-else :class="{outOfStock:inventory==0}">Out of Stock</p>
         Description:
-        <ul>
-          <li v-for="detail in details" >{{detail}}</li>
-        </ul>
+        <productDetails :details="details" ></productDetails>
         Sizes:
         <ul>
           <li v-for="size in sizes">{{size}}</li>
@@ -36,6 +34,7 @@ Vue.component("product", {
               @mouseover="updateProduct(index)" >
             </li>
         </ul>
+        <p>Shipping: {{shipping}}</p>
         <button v-on:click="removeFromCart">Remove from Cart</button>
         <div class="cart">
           <p>Cart({{cart}})</p>
@@ -85,15 +84,14 @@ Vue.component("product", {
    }
  },
  computed:{
+  shipping(){
+    if(this.premium){
+      return "Free";
+    }
+    return "2.99 €";
+  },
    title(){
-     return `
-  $ {
-    this.brand
-  }
-  $ {
-    this.product
-  }
-  `;
+     return `${ this.brand } ${this.product}`;
     },
     image_sock(){
       return this.variants[this.selectedVariant].variantImage;     
@@ -106,6 +104,17 @@ Vue.component("product", {
     }
  }
 })
+
+Vue.component("productDetails", {
+  props: {
+    details: {
+      type: Array,
+      required: true
+    }
+  },
+  template: `<ul><li v-for="detail in details" >{{detail}}</li></ul>`
+})
+
 
 
 
