@@ -36,8 +36,11 @@ Vue.component("product", {
         </ul>
         <p>Shipping: {{shipping}}</p>
         <button v-on:click="removeFromCart">Remove from Cart</button>
-      </div>
-      <a v-bind:href="my_link">Google</a>        
+        <p>
+          <product-review></product-review>
+        </p>
+        </div>
+       <a v-bind:href="my_link">Google</a>
   </div>`,
   data() {  
     return {
@@ -113,7 +116,43 @@ Vue.component("productDetails", {
   template: `<ul><li v-for="detail in details" >{{detail}}</li></ul>`
 })
 
+Vue.component("product-review",{
+  template: 
+  `<form class="review-form" >
+    
+    <p>
+      <label for="name" >Name: </label>
+      <input id="name" v-model="name">  
+    </p>
 
+    <p>
+      <label for="review" >Review:</label>
+      <textarea id="review" v-model="review" ></textarea>
+    </p>
+    
+    <p>
+      <label for="rating" >Rating:</label>
+      <select id="rating" v-model.number="rating" >
+        <option>5</option>
+        <option>4</option>
+        <option>3</option>
+        <option>2</option>
+        <option>1</option>
+      </select>
+    </p>
+
+    <p>
+      <input type="submit" value="Submit" >
+    </p>
+  </form>`,
+  data(){
+    return {
+      name:null,
+      review:null,
+      rating:null
+    }
+  }
+})
 
 
 var app = new Vue({
