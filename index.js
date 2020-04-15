@@ -39,6 +39,17 @@ Vue.component("product", {
         <p>
           <product-review @review-submitted="addReview" ></product-review>
         </p>
+        <div>
+          <h2>Reviews</h2>
+          <p>There are no reviews yet.</p>
+          <ul>
+            <li v-for="review in reviews"  >
+             <p>Name: {{ review.name }}</p>
+             <p>Review: {{ review.review }}</p>
+             <p>Rating: {{ review.rating }}</p> 
+            </li>
+          </ul>
+        </div>
         </div>
        <a v-bind:href="my_link">Google</a>
   </div>`,
@@ -63,7 +74,7 @@ Vue.component("product", {
         variantQuantity: 10,
       }],
       sizes:[12.5,9, 9.5],
-      reviews:[]
+      reviews:[]  
     }
  },
  methods:{
